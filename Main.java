@@ -30,6 +30,7 @@ public class Main extends Application {
             BP.setCenter(CV);
 
             Text topText = new Text("Displaying Letter Frequencies of: " + filename);
+            BorderPane.setAlignment(topText, Pos.TOP_CENTER);
 
             Text inputText = new Text("Enter # of Letter Frequencies to Display: ");
             pieInput = new TextField();
@@ -44,11 +45,9 @@ public class Main extends Application {
             });
 
             HBox hbox = new HBox(inputText, pieInput);
-
-            BorderPane.setAlignment(topText, Pos.TOP_CENTER);
-
+            hbox.setAlignment(Pos.BASELINE_CENTER);
+            
             BP.setStyle("-fx-padding: 10;");
-
             BP.setTop(topText);
             BP.setBottom(hbox);
 
