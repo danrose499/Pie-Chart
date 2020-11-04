@@ -50,7 +50,7 @@ public class HistogramAlphaBet {
     public void drawPieChart(GraphicsContext GC, int SlicesToPrint) {
         int cWidth = (int) GC.getCanvas().getWidth();
         int cHeight = (int) GC.getCanvas().getHeight();
-        double d = (4.5 * (Math.min(cWidth, cHeight) / 2.0) / 3.0)-50;
+        double d = (3.0 * (Math.min(cWidth, cHeight) / 4.0))-50;
         MyPoint arcPoint = new MyPoint(cWidth / 2 - (int) d / 2, cHeight / 2 - (int) d / 2);
         PieChart charChart = new PieChart(arcPoint, d);
         charChart.draw(GC, totalChars, SlicesToPrint, sortedFrequency);
