@@ -5,11 +5,13 @@ import java.util.Map;
 
 public class PieChart {
     MyColor[] col = {
+//            MyColor.BLUE, MyColor.GREEN, MyColor.PURPLE, MyColor.ORANGE, MyColor.RED, MyColor.CYAN,
+//            MyColor.MAROON, MyColor.SKY_BLUE, MyColor.LIME, MyColor.BLUE, MyColor.GREEN, MyColor.PURPLE,
+//            MyColor.ORANGE, MyColor.RED, MyColor.CYAN, MyColor.MAROON, MyColor.SKY_BLUE, MyColor.LIME,
+//            MyColor.BLUE, MyColor.GREEN, MyColor.PURPLE, MyColor.ORANGE, MyColor.RED, MyColor.CYAN,
+//            MyColor.MAROON, MyColor.SKY_BLUE
             MyColor.BLUE, MyColor.GREEN, MyColor.PURPLE, MyColor.ORANGE, MyColor.RED, MyColor.CYAN,
-            MyColor.MAROON, MyColor.SKY_BLUE, MyColor.LIME, MyColor.BLUE, MyColor.GREEN, MyColor.PURPLE,
-            MyColor.ORANGE, MyColor.RED, MyColor.CYAN, MyColor.MAROON, MyColor.SKY_BLUE, MyColor.LIME,
-            MyColor.BLUE, MyColor.GREEN, MyColor.PURPLE, MyColor.ORANGE, MyColor.RED, MyColor.CYAN,
-            MyColor.MAROON, MyColor.SKY_BLUE
+            MyColor.MAROON, MyColor.SKY_BLUE, MyColor.LIME
     };
 
     double d, r, rOffsetLeft, rOffsetRight;
@@ -34,7 +36,7 @@ public class PieChart {
             if(SlicesToPrint > 0){
                 SlicesToPrint--;
 
-                MyArc temp = new MyArc(arcPoint, d, d, startAngle, angleExtent, col[SlicesToPrint]);
+                MyArc temp = new MyArc(arcPoint, d, d, startAngle, angleExtent, col[SlicesToPrint%9]);
                 temp.draw(GC);
 
                 double thisFrequency = (Math.round(1000.00 * value / (double) totalFrequency) / 1000.00);
