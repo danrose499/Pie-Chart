@@ -5,11 +5,6 @@ import java.util.Map;
 
 public class PieChart {
     MyColor[] col = {
-//            MyColor.BLUE, MyColor.GREEN, MyColor.PURPLE, MyColor.ORANGE, MyColor.RED, MyColor.CYAN,
-//            MyColor.MAROON, MyColor.SKY_BLUE, MyColor.LIME, MyColor.BLUE, MyColor.GREEN, MyColor.PURPLE,
-//            MyColor.ORANGE, MyColor.RED, MyColor.CYAN, MyColor.MAROON, MyColor.SKY_BLUE, MyColor.LIME,
-//            MyColor.BLUE, MyColor.GREEN, MyColor.PURPLE, MyColor.ORANGE, MyColor.RED, MyColor.CYAN,
-//            MyColor.MAROON, MyColor.SKY_BLUE
             MyColor.BLUE, MyColor.GREEN, MyColor.PURPLE, MyColor.ORANGE, MyColor.RED, MyColor.CYAN,
             MyColor.MAROON, MyColor.SKY_BLUE, MyColor.LIME
     };
