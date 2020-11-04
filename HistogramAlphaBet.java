@@ -17,8 +17,9 @@ public class HistogramAlphaBet {
     int totalChars;
     Map<Character, Integer> sortedFrequency;
 
-    HistogramAlphaBet(String filename) {
+    HistogramAlphaBet(String filename) throws IOException {
         this.filename = filename;
+        getMap();
     }
 
     public void getMap() throws IOException {
@@ -29,7 +30,7 @@ public class HistogramAlphaBet {
 
         Map<Character, Integer> frequency = new HashMap<>();
 
-        for(int i = 0; i < s.length(); i++) {
+        for(int i = 0; i < totalChars; i++) {
             Character Ch = s.charAt(i);
             incrementFrequency(frequency, Ch);
         }
@@ -46,8 +47,7 @@ public class HistogramAlphaBet {
         m.put(Key, m.get(Key) + 1);
     }
 
-    public void drawPieChart(GraphicsContext GC, int SlicesToPrint) throws IOException {
-        getMap();
+    public void drawPieChart(GraphicsContext GC, int SlicesToPrint) {
         int cWidth = (int) GC.getCanvas().getWidth();
         int cHeight = (int) GC.getCanvas().getHeight();
         double d = (4.5 * (Math.min(cWidth, cHeight) / 2.0) / 3.0)-50;
