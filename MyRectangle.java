@@ -29,7 +29,6 @@ class MyRectangle extends MyShape{
     //Other Methods
     @Override
     public double getArea() { return width*height; }
-    @Override
     public double getPerimeter() { return 2*(width+height); }
     @Override
     public void draw(GraphicsContext GC) {
