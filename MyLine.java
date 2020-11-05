@@ -41,7 +41,6 @@ class MyLine extends MyShape {
     }
     @Override
     public double getArea(){ return 0; }
-    @Override
     public double getPerimeter(){ return getLength(); }
     //Interface Methods
     public MyRectangle getBoundingRectangle() {
