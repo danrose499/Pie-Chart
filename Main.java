@@ -19,7 +19,7 @@ public class Main extends Application {
     HistogramAlphaBet alice;
 
     @Override
-    public void start(Stage primaryStage) /*throws Exception*/ {
+    public void start(Stage primaryStage) {
         try {
             int cWidth = 600, cHeight = 600;
 
