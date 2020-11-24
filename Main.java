@@ -1,7 +1,6 @@
 package sample;
 
 import java.io.IOException;
-
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.geometry.Pos;
@@ -22,11 +21,12 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) /*throws Exception*/ {
         try {
-            primaryStage.setTitle("My PieChart");
+            int cWidth = 600, cHeight = 600;
 
+            primaryStage.setTitle("My PieChart");
             BorderPane BP = new BorderPane();
 
-            CV = addCanvas(500, 500, filename);
+            CV = addCanvas(cWidth, cHeight, filename);
             BP.setCenter(CV);
 
             Text topText = new Text("Displaying Letter Frequencies of: " + filename);
@@ -36,22 +36,16 @@ public class Main extends Application {
             pieInput = new TextField();
             pieInput.setPrefWidth(50);
             pieInput.setAlignment(Pos.CENTER);
-            pieInput.setOnAction(event -> {
-                try {
-                    processReturn(event);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            });
+            pieInput.setOnAction(this::processReturn);
 
             HBox hbox = new HBox(inputText, pieInput);
             hbox.setAlignment(Pos.BASELINE_CENTER);
-            
+
             BP.setStyle("-fx-padding: 10;");
             BP.setTop(topText);
             BP.setBottom(hbox);
 
-            Scene SC = new Scene(BP, 700, 700);
+            Scene SC = new Scene(BP, cWidth + 200, cHeight + 200);
             primaryStage.setScene(SC);
             primaryStage.show();
         } catch (Exception e) {
@@ -64,7 +58,7 @@ public class Main extends Application {
         alice.drawPieChart(CV.getGraphicsContext2D(), 0);
         return CV;
     }
-    private void processReturn(ActionEvent event) throws IOException {
+    private void processReturn(ActionEvent event) {
         int charsToDisplay = Integer.parseInt(pieInput.getText());
         CV.getGraphicsContext2D().clearRect(0, 0, CV.getWidth(), CV.getHeight());
         if (charsToDisplay > 26) { charsToDisplay = 26; }
