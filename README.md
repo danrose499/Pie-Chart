@@ -5,7 +5,7 @@ Pie-Chart uses a custom Java shape hierarchy and color enum (the same one from m
 ![Output](https://i.imgur.com/lGzdwmw.png?1)
 
 ## Walkthrough
-The ```Main``` class begins with the following declarations:
+The ```Main``` class begins with the following declarations which are explained below:
 
 ```Java    
     TextField pieInput;
@@ -13,3 +13,6 @@ The ```Main``` class begins with the following declarations:
     Canvas CV;
     HistogramAlphaBet alice;
 ```
+```pieInput``` is where the user will input the number of slices they want to print; ```filename``` is a String with the name of the file whose characters will be counted (in this example, filename is set to ```"alice.txt"``` which is the name of a file containing the story to "Alice In Wonderland"); ```CV``` is the Canvas which will display the Pie Chart, along with the rest of the GUI; and ```alice``` is an object of the ```HistogramAlphaBet``` class which reads a text file and has a method to return a sorted LinkedHashmap that has the occrunces of each letter in the text file in order of most-common frequency.  
+
+```Main``` continues by overriding ```start```. In the overriden version, a title is given to the ```primaryStage```, a BoderPane is declared (BP), and the ```addCanvas``` method is called, setting ```CV``` to 600x600, setting ```alice``` to ```Java new HistogramAlphaBet(filename)```, and calling ```alice```'s ```drawPieChart``` method. 
