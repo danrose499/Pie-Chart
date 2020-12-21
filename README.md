@@ -6,9 +6,7 @@ Pie-Chart uses a custom Java shape hierarchy and color enum (the same one from m
 
 ## Walkthrough
 The ```Main``` class begins with the following declarations:
-```Java
-    TextField pieInput;
+```Java    TextField pieInput;
     String filename = "alice.txt";
     Canvas CV;
-    HistogramAlphaBet alice;
-``
+    HistogramAlphaBet alice;```
