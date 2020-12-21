@@ -5,6 +5,7 @@ Pie-Chart uses a custom Java shape hierarchy and color enum (the same one from m
 ![Output](https://i.imgur.com/lGzdwmw.png?1)
 
 ## Walkthrough
+### Main
 The ```Main``` class begins with the following declarations which are explained below:
 
 ```Java    
@@ -17,3 +18,17 @@ The ```Main``` class begins with the following declarations which are explained 
 
 ```Main``` continues by overriding ```start```. In the overriden version, a title is given to the ```primaryStage```, a BoderPane is declared (BP), and the ```addCanvas``` method is called, setting ```CV``` to 600x600, setting ```alice = new HistogramAlphaBet(filename)```, and calling ```alice```'s ```drawPieChart``` method. As this is still before any user input has been receieved, ```darPieChart``` is called with parameters such that an empty pie chart is drawn, as seen below:
 ![Output](https://i.imgur.com/c6XKphh.png)
+
+Next in ```Main```, ```CV``` is set as the center node of ```BP```. A Text displaying ```"Displaying Letter Frequencies of: " + filename``` is set as the top node of ```BP```. For the bottom node of ```BP```, an HBox is created with a Text displaing ```"Enter # of Letter Frequencies to Display: "``` and a TextField to its right (which is where the user will input the number of slices to display). The left and right nodes of ```BP``` are left null. 
+
+### HistogramAlphaBet
+### processReturn
+Although this method is part of ```Main```, it is included as its own section as it can be better understood with the context gained from the other sections.
+The processReturn is called whenever ```Return``` is entered in the TextField in ```BP```. The method is included below:
+```Java
+        int charsToDisplay = Integer.parseInt(pieInput.getText());
+        CV.getGraphicsContext2D().clearRect(0, 0, CV.getWidth(), CV.getHeight());
+        if (charsToDisplay > 26) { charsToDisplay = 26; }
+        alice.drawPieChart(CV.getGraphicsContext2D(), charsToDisplay);
+```
+As can be seen, it merely gets the int from the textField and checks it's not greater than 26--the total number of letters in the English alphabet and, thus, the greatest amount of slices that would need to be printed. ```CV``` is then cleared and ```alice```'s drawPieChart method is called, with the number just collected used as the parameter that tells how many slices to print. 
