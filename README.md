@@ -26,9 +26,11 @@ Next in ```Main```, ```CV``` is set as the center node of ```BP```. A Text displ
 Although this method is part of ```Main```, it is included as its own section as it can be better understood with the context gained from the other sections.
 The processReturn is called whenever ```Return``` is entered in the TextField in ```BP```. The method is included below:
 ```Java
+    private void processReturn(ActionEvent event) {
         int charsToDisplay = Integer.parseInt(pieInput.getText());
         CV.getGraphicsContext2D().clearRect(0, 0, CV.getWidth(), CV.getHeight());
         if (charsToDisplay > 26) { charsToDisplay = 26; }
         alice.drawPieChart(CV.getGraphicsContext2D(), charsToDisplay);
+    }
 ```
 As can be seen, it merely gets the int from the textField and checks it's not greater than 26--the total number of letters in the English alphabet and, thus, the greatest amount of slices that would need to be printed. ```CV``` is then cleared and ```alice```'s drawPieChart method is called, with the number just collected used as the parameter that tells how many slices to print. 
