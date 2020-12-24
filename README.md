@@ -22,6 +22,44 @@ The ```Main``` class begins with the following declarations which are explained 
 Next in ```Main```, ```CV``` is set as the center node of ```BP```. A Text displaying ```"Displaying Letter Frequencies of: " + filename``` is set as the top node of ```BP```. For the bottom node of ```BP```, an HBox is created with a Text displaing ```"Enter # of Letter Frequencies to Display: "``` and a TextField to its right (which is where the user will input the number of slices to display). The left and right nodes of ```BP``` are left null. 
 
 ### HistogramAlphaBet
+The ```getMap``` method included below defines a string ```s``` which is a string of the lowercase of each letter in the file. A HashMap ```sortedFrequency``` is then defined such that the keys of the map are the letters, a through z, and the values are the frequency that the respective letter appears in the file. ```sortedFrequency``` is ordered such in decreased frequency of values, ie, the letter that appears most frequently in the file will be the first key in the map. The method is included below:
+```Java
+    public void getMap() throws IOException {
+        Path fileName = Path.of(filename);
+        String actual = Files.readString(fileName);
+        String s = actual.replaceAll("[^a-zA-Z]", "").toLowerCase();
+        totalChars = s.length();
+
+        Map<Character, Integer> frequency = new HashMap<>();
+
+        for(int i = 0; i < totalChars; i++) {
+            Character Ch = s.charAt(i);
+            incrementFrequency(frequency, Ch);
+        }
+
+        this.sortedFrequency = frequency
+                .entrySet()
+                .stream()
+                .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
+                .collect(toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e2, LinkedHashMap::new));
+    }
+
+    public static <K> void incrementFrequency(Map<K, Integer> m, K Key) {
+        m.putIfAbsent(Key, 0);
+        m.put(Key, m.get(Key) + 1);
+    }
+```  
+The ```drawPieChart``` method included below uses the custom made ```MyPoint``` and ```PieChart``` classes. More information on these classes can be found in the MyShape repository (https://github.com/danrose499/MyShape). The method creates a ```PieChart``` object with a diameter that is 50 pixels less than 75% of the smallest axes of the canvas. This is to allow room for lables for the ```PieChart``` object to be printed. The method ends by calling the ```draw``` method of the ```PieChart``` object which prints the chart on the canvas with the given number of slices.  
+```Java
+    public void drawPieChart(GraphicsContext GC, int SlicesToPrint) {
+        int cWidth = (int) GC.getCanvas().getWidth();
+        int cHeight = (int) GC.getCanvas().getHeight();
+        double d = (3.0 * (Math.min(cWidth, cHeight) / 4.0))-50;
+        MyPoint arcPoint = new MyPoint(cWidth / 2 - (int) d / 2, cHeight / 2 - (int) d / 2);
+        PieChart charChart = new PieChart(arcPoint, d);
+        charChart.draw(GC, totalChars, SlicesToPrint, sortedFrequency);
+    }
+```
 ### processReturn
 Although this method is part of ```Main```, it is included as its own section as it can be better understood with the context gained from the other sections.
 The processReturn is called whenever ```Return``` is entered in the TextField in ```BP```. The method is included below:
